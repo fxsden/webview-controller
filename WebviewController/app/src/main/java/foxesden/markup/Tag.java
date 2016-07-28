@@ -1,4 +1,4 @@
-package foxesden.webviewcontroller.markup;
+package foxesden.markup;
 
 public class Tag extends AbstractTag {
 

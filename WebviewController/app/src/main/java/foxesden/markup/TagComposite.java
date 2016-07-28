@@ -1,4 +1,4 @@
-package foxesden.webviewcontroller.markup;
+package foxesden.markup;
 
 import java.util.ArrayList;
 import java.util.List;

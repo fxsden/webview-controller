@@ -1,4 +1,4 @@
-package foxesden.webviewcontroller.markup;
+package foxesden.markup;
 
 import junit.framework.TestCase;
 
