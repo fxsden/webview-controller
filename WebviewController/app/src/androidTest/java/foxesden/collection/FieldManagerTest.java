@@ -44,6 +44,15 @@ public class FieldManagerTest extends TestCase {
     }
 
     public void testAsString() throws Exception {
+        FieldManager fm = new FieldManager(getTestMap());
+        if (!fm.getField("BR").getField("ESTADOS").getField("RS").asString().equals("Rio Grande do Sul")) {
+            throw new Exception("Valor esperado inválido era esperado Rio Grande do Sul Retornado" + fm.getField("BR").getField("ESTADOS").getField("RS").asString());
+        }
+
+        if (!fm.getField("BR").getField("ESTADOS").getField("SC").asString().equals("Santa Catarina")) {
+            throw new Exception("Valor esperado inválido era esperado Santa Catarina Retornado" + fm.getField("BR").getField("ESTADOS").getField("SC").asString());
+        }
+
 
     }
 
