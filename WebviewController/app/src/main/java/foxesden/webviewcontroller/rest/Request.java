@@ -16,7 +16,7 @@ public class Request {
         for(String field : fields) {
             String[] parts = field.split("=");
             String[] keys = parts[0].replace("]","").split("\\[");
-            String value = parts[1];
+            String value = parts.length == 2 ? parts[1] : "";
             int len = keys.length;
             if (len > 1) {
                 Map map = fieldMap;

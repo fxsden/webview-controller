@@ -5,6 +5,10 @@ import android.os.Bundle;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import java.io.ByteArrayInputStream;
+
+import foxesden.markup.Tag;
+import foxesden.markup.TagComposite;
 import foxesden.webviewcontroller.android.WebViewClientFactory;
 import foxesden.webviewcontroller.rest.Request;
 import foxesden.webviewcontroller.rest.Response;
@@ -22,7 +26,15 @@ public class MainActivity extends AppCompatActivity {
         interceptor.addHandler("/test", new RequestProcessor() {
             @Override
             public Response process(Request request) {
-                return null;
+                TagComposite html = new TagComposite("html");
+                html.addChild((new TagComposite("head")).addChild((new Tag("title")).setValue("Test")))
+                    .addChild((new TagComposite("body")).addChild(new Tag("h1").setValue("TEST OK")));
+                Response response = new Response();
+                response.setStatusCode(200)
+                        .setReasonPhrase("OK")
+                        .setData(new ByteArrayInputStream(html.getValue().getBytes()))
+                        .getHeaders().add("Content-type","text/html");
+                return response;
             }
         });
         webview.setWebViewClient(WebViewClientFactory.create(interceptor));

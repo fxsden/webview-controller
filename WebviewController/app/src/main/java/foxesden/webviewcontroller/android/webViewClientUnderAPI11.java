@@ -8,9 +8,9 @@ import foxesden.webviewcontroller.Interceptor;
 import foxesden.webviewcontroller.rest.Request;
 import foxesden.webviewcontroller.rest.Response;
 
-public class webViewClientUnderAPI11 extends WebViewClientAdapter {
+public class WebViewClientUnderAPI11 extends WebViewClientAdapter {
 
-    public webViewClientUnderAPI11(Interceptor interceptor) {
+    public WebViewClientUnderAPI11(Interceptor interceptor) {
         super(interceptor);
     }
 

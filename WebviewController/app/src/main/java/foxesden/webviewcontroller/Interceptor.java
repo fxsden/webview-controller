@@ -21,7 +21,7 @@ public class Interceptor implements RequestProcessor {
 
     public Response process(Request request) {
         RequestProcessor handler = requestMap.get(request.getUri().getPath());
-        if (handler == null) {
+        if (handler != null) {
             return handler.process(request);
         }
         return null;
