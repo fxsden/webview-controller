@@ -16,8 +16,14 @@ public class WebViewClientUnderAPI21 extends WebViewClientAdapter {
         super(interceptor);
     }
 
+    @Override
+    public boolean shouldOverrideUrlLoading(WebView view, String url) {
+        return false;
+    }
+
+    @Override
     public WebResourceResponse shouldInterceptRequest(WebView view, String url) {
-        Request request = new Request();
+        Request request = new Request(url);
         Response response = interceptor.process(request);
 
         return null;

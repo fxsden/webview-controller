@@ -15,6 +15,10 @@ public class Interceptor implements RequestProcessor {
         return this;
     }
 
+    public boolean isInterceptionAllowed(Request request) {
+        return requestMap.containsKey(request.getUri().getPath());
+    }
+
     public Response process(Request request) {
         if (request.getUri().getHost() == null) {
             RequestProcessor handler = requestMap.get(request.getUri().getPath());

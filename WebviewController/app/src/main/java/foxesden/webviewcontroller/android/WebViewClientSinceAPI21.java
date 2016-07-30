@@ -12,6 +12,12 @@ public class WebViewClientSinceAPI21 extends WebViewClientAdapter {
         super(interceptor);
     }
 
+    /*@Override
+    public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request)  {
+        return false;
+    }*/
+
+    @Override
     public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
         return null;
     }
