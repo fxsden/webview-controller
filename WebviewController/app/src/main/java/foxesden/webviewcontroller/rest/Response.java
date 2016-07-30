@@ -54,10 +54,16 @@ public class Response {
             byte[] buffer = new byte[1024];
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
             Base64OutputStream base64OutputStream = new Base64OutputStream(byteArrayOutputStream, Base64.DEFAULT);
-            int b;
-            while(data.read(buffer) > -1) {
+            int count;
+            while((count = data.read(buffer)) > -1) {
+                if (count < 1024) {
+                    byte[] finalBuffer = new byte[count];
+                    System.arraycopy(buffer, 0, finalBuffer, 0, count);
+                    buffer = finalBuffer;
+                }
                 base64OutputStream.write(buffer);
             }
+            base64OutputStream.close();
             b64Cache = new String(byteArrayOutputStream.toByteArray());
         }
         return b64Cache;

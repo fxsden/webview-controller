@@ -30,15 +30,17 @@ public class ResponseTest extends InstrumentationTestCase {
                 "Isto é um teste de base 64 ... Isto é um teste de base 64 ... Isto é um teste de base 64 ... " +
                 "Isto é um teste de base 64 ... Isto é um teste de base 64 ... Isto é um teste de base 64 ... " +
                 "Isto é um teste de base 64 ... Isto é um teste de base 64 ... Isto é um teste de base 64 ... fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff";
-        test = "SEM ACENTO";
-        InputStream stream = new ByteArrayInputStream((test).getBytes());
-        response.setData(stream);
-        String b64Decode = new String(Base64.decode(response.getDataAsBase64(), Base64.DEFAULT));
-        if (!b64Decode.trim().equals(test)) {
-            throw  new Exception("Base 64 decodificado não corresponde ao teste. |" + test + "|" + b64Decode + "|");
+
+        test = "";
+
+        while(test.length() < 10240) {
+            test = test + "0";
+            InputStream stream = new ByteArrayInputStream((test).getBytes());
+            response.setData(stream);
+            String b64Decode = new String(Base64.decode(response.getDataAsBase64(), Base64.DEFAULT));
+            if (!b64Decode.equals(test)) {
+                throw  new Exception("Base 64 decodificado não corresponde ao teste. |" + test + "|" + b64Decode + "|" + response.getDataAsBase64());
+            }
         }
-
-
-
     }
 }
