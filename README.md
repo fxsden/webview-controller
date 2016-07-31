@@ -2,9 +2,9 @@
 WebViewController gives an easy way to intercept Android's WebView requests. It also standardizes the different forms of resource handling existent in each version of Android's SDK.
 
 There are three main steps for using WebViewController:
-* Instantiate the `Interceptor` class
-* Add the path intended to be intercepted with a overridden interface of `RequestProcessor`
-* Set the `WebViewClient` of your `WebView` with product of `WebViewClientFactory`
+1. Instantiate the `Interceptor` class
+2. Add the path intended to be intercepted with a overridden interface of `RequestProcessor`
+3. Set the `WebViewClient` of your `WebView` with product of `WebViewClientFactory`
 
 ```
 Interceptor interceptor = new Interceptor();
